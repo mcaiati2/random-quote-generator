@@ -32,36 +32,48 @@ ie. it sends back an object like the one below:
   quote: 'Javascript is the tool that turnds ideas into reality
 }
 */
+
+
 // Making a route. Server is going to listen for a GET request. This is a GET route.
 // On our computer, our local address/domain. localhost is the free domain that your computer's OS gives you. 3333 is the port.
 // Every software on your computer has to run on a separate port. We're creating a server and it has to run on a unqiue port number that no other software is running on.
+
 // 1 required argument, the route.
 // Domain is going to be localhost:3333/
+
 // if you wanted them to only have to type your domain, you'd enter it like this with a /.
 // 1st argument is the request object, and then 2nd argument is the response object.
 // requestObj is info you get from the browser.
 // responseObj is what we use to send something back to the browser
 app.get('/', (_, responseObj) => {
-    responseObj.send('Hi there from the server');
-});
+  responseObj.send('Hi there from the server');
+})
 // we need to enter the second parameter, so we enter _ for the first one
+
 // callback function
 app.get('/data', (_, responseObj) => {
-    const data = {
-        name: 'Mike',
-        age: 31
-    };
-    responseObj.send(data);
+  const data = {
+    name: 'Mike',
+    age: 31
+  };
+
+  responseObj.send(data)
 });
+
+
 app.get('/quote', (_, responseObj) => {
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    responseObj.send({
-        quote: randomQuote
-    });
-});
-// we choose a port number that isn't taken by any other program on your computer. 
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  responseObj.send({
+    quote: randomQuote
+  });
+})
+
+
+
+// we choose a port number that isn't taken by any other program on your computer.
 // when the server starts up, we can make it do something when it starts
 app.listen(3333, () => {
-    console.log('Server started on port 3333');
+  console.log('Server started on port 3333');
 });
+
 // all client tools can make http requests. they are typically trigering those requests through url. our client side browser is making an http request to our backend server that's running in our terminal. 
