@@ -53,7 +53,7 @@ app.get('/data', (_, responseObj) => {
     };
     responseObj.send(data);
 });
-app.get('/api/quote/', (_, responseObj) => {
+app.get('/api/quote', (_, responseObj) => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     responseObj.send({
         quote: randomQuote
