@@ -1,6 +1,7 @@
 // Server - some software that is running on the computer. cycling and waiting.
 // If you make a server locally, it will use your local ip address by default. 127.0.0.1 - local domain
 import express from 'express';
+import cors from 'cors';
 
 // Common convention - calling on express, and you're stiring the data to the express app. this app now has a bunch of methods on it.
 const app = express();
@@ -48,23 +49,25 @@ ie. it sends back an object like the one below:
 // 1st argument is the request object, and then 2nd argument is the response object.
 // requestObj is info you get from the browser.
 // responseObj is what we use to send something back to the browser
-app.get('/', (_, responseObj) => {
-  responseObj.send('Hi there from the server');
-})
+// app.get('/', (_, responseObj) => {
+//   responseObj.send('Hi there from the server');
+// })
 // we need to enter the second parameter, so we enter _ for the first one
 
 // callback function
-app.get('/data', (_, responseObj) => {
-  const data = {
-    name: 'Mike',
-    age: 31
-  };
+// app.get('/data', (_, responseObj) => {
+//   const data = {
+//     name: 'Mike',
+//     age: 31
+//   };
 
-  responseObj.send(data)
-});
+//   responseObj.send(data)
+// });
 
+// Allow other domains to make requests to our server
+app.use(cors());
 
-app.get('/quote', (_, responseObj) => {
+app.get('/api/quote', (_, responseObj) => {
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   responseObj.send({
     quote: randomQuote
