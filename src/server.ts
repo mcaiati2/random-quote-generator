@@ -34,7 +34,7 @@ ie. it sends back an object like the one below:
 {
   quote: 'Javascript is the tool that turnds ideas into reality
 }
-*
+*/
 
 
 // Making a route. Server is going to listen for a GET request. This is a GET route.
