@@ -1,23 +1,19 @@
 {
-  "name": "server_apis",
+  "name": "server_api_overview",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w",
-    "start": "node dist/server.js"
+    "server:build": "cd ./server && npm run build",
+    "compiler": "cd ./server && npm run compiler",
+    "server:dev": "cd ./server && npm run dev",
+    "dev": "concurrently \"npm run compiler\" \"npm run server:dev\"",
+    "start": "cd ./server && npm start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.1"
-  },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0"
+  "concurrently": "^9.0.1"
   }
 }
