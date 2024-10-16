@@ -4,16 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "client:dev": "cd ./client && npm run dev",
     "server:build": "cd ./server && npm run build",
     "compiler": "cd ./server && npm run compiler",
     "server:dev": "cd ./server && npm run dev",
-    "dev": "concurrently \"npm run compiler\" \"npm run server:dev\"",
+    "dev": "concurrently \"npm run compiler\" \"npm run server:dev\" \"npm run client:dev\"",
     "start": "cd ./server && npm start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-  "concurrently": "^9.0.1"
+    "concurrently": "^9.0.1"
+  },
+  "dependencies": {
+    "vite": "^5.4.9"
   }
 }

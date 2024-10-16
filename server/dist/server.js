@@ -17,12 +17,14 @@ const quotes = [
     'JavaScript is the key to unlocking the full potential of the web.',
     'Keep calm and code JavaScript.'
 ];
+// Random quote GET route
 app.get('/api/quote', (_, responseObj) => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     responseObj.send({
         quote: randomQuote
     });
 });
+// Start the server
 app.listen(3333, () => {
     console.log('Server started on port 3333');
 });
