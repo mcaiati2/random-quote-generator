@@ -1,29 +1,19 @@
 import express from 'express';
+import dotenv from 'dotenv';
+// above the import so any files so it has access to env variables
+dotenv.config();
+import api_routes from './routes/api_routes.js';
+import htmlRoutes from './routes/htmlRoutes.js';
 const app = express();
-const quotes = [
-    'JavaScript is the language of the web. Embrace it!',
-    'Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.',
-    'The best way to learn JavaScript is to build projects.',
-    'Debugging is like being the detective in a crime movie where you are also the murderer.',
-    'Code is like humor. When you have to explain it, its bad.',
-    'First, solve the problem. Then, write the code.',
-    'JavaScript is the duct tape of the Internet.',
-    'Learning JavaScript is a marathon, not a sprint.',
-    'The only way to learn a new programming language is by writing programs in it.',
-    'JavaScript is the art of turning coffee into code.',
-    'Dont worry if it doesnt work right. If everything did, youd be out of a job.',
-    'JavaScript is the Swiss Army knife of web development.',
-    'The more you code, the better you get at it.',
-    'JavaScript is the key to unlocking the full potential of the web.',
-    'Keep calm and code JavaScript.'
-];
-// Random quote GET route
-app.get('/api/quote', (_, responseObj) => {
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    responseObj.send({
-        quote: randomQuote
-    });
-});
+// Static Middleware - Allows client access to an entire folder and all of the files within that folder. Only folder we want the browser to have access to is the client dist folder.
+// the static method creates a GET route for every file within the shared folder.
+// gives the client access to the entire folder.
+// relative to the package json that is runnin the script
+app.use(express.static('../client/dist'));
+//  Load In API Routes
+app.use(api_routes);
+// Load in HTML routes
+app.use(htmlRoutes);
 // Start the server
 app.listen(3333, () => {
     console.log('Server started on port 3333');
