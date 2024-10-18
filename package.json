@@ -7,11 +7,14 @@
     "client:dev": "cd ./client && npm run dev",
     "client:build": "cd ./client && npm run build",
     "server:build": "cd ./server && npm run build",
+    "save": "git add -A && git commit -m \" ready for deploy\"",
+    "push": "git push quote HEAD:main",
     "compiler": "cd ./server && npm run compiler",
     "server:dev": "cd ./server && npm run dev",
     "install": "cd ./server && npm i",
     "dev": "concurrently \"npm run compiler\" \"npm run server:dev\" \"npm run client:dev\"",
-    "start": "cd ./server && npm start"
+    "start": "cd ./server && npm start",
+    "deploy": "npm run client:build && npm run server:build && npm run save && npm run push"
   },
   "keywords": [],
   "author": "",
